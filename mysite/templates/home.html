@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block title %}
+    我的网站|首页
+{% endblock %}
+{% block hearder_extend %}
+   <link rel="stylesheet" href="{% static 'home.css' %}"
+{% endblock hearder_extend %}
+{% block content %}
+    <h3 class="home-content">welcome to my site</h3>
+{% endblock %}
+
