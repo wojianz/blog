@@ -3,6 +3,11 @@
 {% block title %}
     {{ blog_type.type_name }}
 {% endblock title %}
+
+{% block nav_blog_active %}
+  active
+{% endblock %}
+
 {% block content %}
     <p>{{ blog_type.type_name }}</p>
     {% for blog in blogs %}
@@ -13,7 +18,7 @@
     {% empty %}
        <p>暂无博客，请期待</p> 
     {% endfor %}
-    <p style="margin-left:80%">当前一共有{{ blogs|length }}篇文章</p>
+    <p>当前一共有{{ blogs|length }}篇文章</p>
 {% endblock content %}
     
 

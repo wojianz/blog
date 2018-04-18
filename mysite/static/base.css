@@ -4,17 +4,3 @@
     padding: 0;
 
 }
-   div.nav{
-    background-color: gray;
-    border-bottom: 1px solid pink;
-    padding: 10px 5px;
-}
-    div.nav a{
-        text-decoration: none;
-        color: black;
-        padding: 5px 10px;
-    }
-    div.nav a.logo{
-        display: inline-block;
-        font-size: 120%;
-    }

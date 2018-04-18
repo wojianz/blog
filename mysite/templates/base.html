@@ -1,23 +1,36 @@
 {% load staticfiles %}
 <!DOCTYPE html>
-<html>
+<html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta http-equ iv="X-UA-Compatible" content="ie=edge">
     <title>{% block title %}{% endblock %}</title>
     <link rel="stylesheet" href="{% static 'base.css' %}">
+    <link rel="stylesheet" href="{% static 'jquery-1.12.4.min.js' %}">
+    <link rel="stylesheet" href="{% static 'bootstrap-3.3.7/css/bootstrap.min.css' %}">
+    <script type="text/javasctipt" src="{% static 'bootstrap-3.3.7/js/bootstrap.min.js' %}"></script>
      {% block hearder_extend %}{% endblock hearder_extend %}
 </head>
 <body>
-    <div class="nav"> 
-        <a class="logo">
-            <!-- href="{% url 'home' %}" -->
-        <h3>MyBlog</h3>
-        </a>
-        <a href="/">首页</a>
-        <a href="{% url 'blog_list' %}">Blog</a>
-    </div>
+     <nav class="navbar navbar-default" role="navigation">
+          <div class="container-fluid">
+                <div class="navbar-header">
+                    <span class="navbar-brand">MyBlog</span>
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                    </button>
+                </div>
+                <div id="navbar-collapse" class="collapsed navbar-collapse">
+                    <ul class="nav navbar-nav">
+                    <li class="{% block nav_home_active %}{% endblock %}"><a href="/">首页</a></li>
+                    <li class="{% block nav_blog_active %}{% endblock %}"><a href="{% url 'blog_list' %}">博客</a></li>
+                </ul>
+                </div>    
+          </div>
+      </nav>
    {% block content %}{% endblock %} 
 </body>
 </html>
