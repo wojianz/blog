@@ -1,1 +1,1 @@
-# blog
+# my first blog by django
