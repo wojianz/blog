@@ -13,6 +13,9 @@ class Blog(models.Model):
     last_updated_time=models.DateTimeField(auto_now=True)
     def __str__(self):
         return "<blog: %s>" %self.title
+    class Meta:
+        ordering=['-creat_time']
+           
 
         
 

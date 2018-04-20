@@ -7,14 +7,32 @@
   active
 {% endblock %}
 
+{% load staticfiles %}
+{% block hearder_extend %}
+    <link rel="stylesheet" href="{% static 'blog/blog.css' %}">
+{% endblock %}
+
 {% block content %}
-<h3>{{ blog.title }}</h3>
-<p>作者：{{ blog.author }}</p>
-<p>发表时间:{{blog.creat_time|date:"y-m-d H:m:s"}}</p>
-<p>分类：
-    <a href="{% url 'blogs_with_type' blog.blog_type.pk %}" style="text-decoration:none">
-        {{ blog.blog_type}}
-    </a>
-</p>
-<p>{{ blog.content }}</p>
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-10 col-xs-offset-1">
+        <h3>{{ blog.title }}</h3>
+        <ul class="blog_info_detail">
+          <li>作者：{{ blog.author }}</li>
+          <li>分类：
+            <a href="{% url 'blogs_with_type' blog.blog_type.pk %}" style="text-decoration:none">
+              {{ blog.blog_type}}
+            </a>
+          </li>
+          <li>发表时间:{{blog.creat_time|date:"y-m-d H:m:s"}}</li>
+        </ul>
+        <div class="blog_content">
+          {{ blog.content }}
+        </div> 
+      </div>
+    </div>
+  </div>
+
+
+
 {% endblock %}  

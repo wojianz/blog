@@ -1,25 +1,10 @@
-{% extends "base.html" %}
+{% extends "blog/blog_list.html" %}
 
 {% block title %}
     {{ blog_type.type_name }}
 {% endblock title %}
+{% block blog_list_title %}
+     分类：{{ blog_type.type_name }}(一共有{{blogs|length}}篇)
+      <a href="{% url 'blog_list' %}" style="color:black">查看全部</a>
+{% endblock %}      
 
-{% block nav_blog_active %}
-  active
-{% endblock %}
-
-{% block content %}
-    <p>{{ blog_type.type_name }}</p>
-    {% for blog in blogs %}
-      <a href="{% url 'blog_detail' blog.pk %}" style="text-decoration:none">
-          <h3>{{ blog.title }}</h3>
-      </a>   
-     <p>{{ blog.content|truncatechars:5}}</p>
-    {% empty %}
-       <p>暂无博客，请期待</p> 
-    {% endfor %}
-    <p>当前一共有{{ blogs|length }}篇文章</p>
-{% endblock content %}
-    
-
-    
