@@ -90,6 +90,21 @@
                   </ul>
             </div>
         </div>
+
+        <div class="panel panel-info">
+            <div class="panel-heading">日期分类</div>
+            <div class="panel-body">
+                <ul class="blog-types">
+                    {%  for blog_date in blog_dates %}
+                        <li>
+                          <a href="{% url 'blogs_with_date' blog_date.year blog_date.month %}">{{ blog_date|date:"Y年m月" }}</a>
+                        </li>
+                    {% empty %}
+                         <li>暂无分类</li>
+                    {% endfor %}
+                  </ul>
+            </div>
+        </div>
     </div>
   </div>
 </div>
