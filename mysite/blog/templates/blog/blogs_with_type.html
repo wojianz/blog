@@ -4,7 +4,7 @@
     {{ blog_type.type_name }}
 {% endblock title %}
 {% block blog_list_title %}
-     分类：{{ blog_type.type_name }}(一共有{{blogs|length}}篇)
+     分类：{{ blog_type.type_name }}
       <a href="{% url 'blog_list' %}" style="color:black">查看全部</a>
 {% endblock %}      
 

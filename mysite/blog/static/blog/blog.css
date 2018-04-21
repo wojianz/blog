@@ -24,3 +24,6 @@ ul.blog_info_detail li{
 div.blog_content{
     text-indent: 2em;
 }
+div.paginator{
+    text-align: center;
+} 

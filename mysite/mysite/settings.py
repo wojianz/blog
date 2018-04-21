@@ -124,3 +124,5 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS=[
     os.path.join(BASE_DIR,'static')
 ]
+# 自定义页面显示博客的数目
+EACH_PAGE_BLOGS=3
