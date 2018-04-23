@@ -27,7 +27,7 @@
           <li>发表时间:{{blog.creat_time|date:"y-m-d H:m:s"}}</li>
         </ul>
         <div class="blog_content">
-          {{ blog.content }}
+          {{ blog.content|safe }}
         </div> 
         <div class="blog-more">
             <!-- <p>上：{{ previous_blog.title }}</p>
