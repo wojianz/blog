@@ -37,8 +37,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'blog',
-    'ckeditor',
+    'blog',#添加app
+    'read_statistics', #添加app
+    'ckeditor',#注册富文本编辑
     'ckeditor_uploader',
 ]
 
