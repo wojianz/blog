@@ -5,6 +5,6 @@ class BlogTypeAdmin(admin.ModelAdmin):
     list_display=('id','type_name')
 @admin.register(Blog)    
 class BlogAdmin(admin.ModelAdmin):
-    list_display=('title','blog_type','author','creat_time','last_updated_time')    
+    list_display=('title','blog_type','author','readed_num','creat_time','last_updated_time')    
 
 # Register your models here.

@@ -38,8 +38,11 @@ def blog_list(request):
     return render_to_response('blog/blog_list.html',context)
 
 def blog_detail(request,blog_pk):
-    context={}
     blog=get_object_or_404(Blog,pk=blog_pk)
+    blog.readed_num+=1
+    blog.save()
+
+    context={}
     context['previous_blog']=Blog.objects.filter(creat_time__gt=blog.creat_time).last()
     context['next_blog']=Blog.objects.filter(creat_time__lt=blog.creat_time).first()
     context['blog']=blog
