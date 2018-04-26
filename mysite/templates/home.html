@@ -15,6 +15,51 @@
 {% block content %}
     <h3 class="home-content">welcome to my site</h3>
     <div id="container"></div>
+
+<div class="hot_data">
+    <h3>今日热门</h3>
+    <ul>
+        {% for hot_data in today_hot_data %}
+        <li>
+            <a href="{% url 'blog_detail' hot_data.content_object.pk %}">{{ hot_data.content_object.title }}</a> ({{ hot_data.read_num }})
+        </li>
+        {% empty %}
+        <li>
+            今日暂无热门
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+
+<div class="hot_data">  
+    <h3>昨日热门</h3>
+    <ul>
+        {% for hot_data in yesterday_hot_data %}
+          <li>
+              <a href="{% url 'blog_detail' hot_data.content_object.pk %}">{{ hot_data.content_object.title }}</a> ({{ hot_data.read_num }})
+          </li>
+        {% empty %}
+          <li>
+              昨日暂无热门
+          </li>  
+        {% endfor %}
+    </ul>
+</div>
+   
+<div class="hot_data">
+    <h3>本周热门</h3>
+    <ul>
+        {% for hot_data in seven_days_hot_data %}
+          <li>
+              <a href="{% url 'blog_detail' hot_data.id %}">{{ hot_data.title }}</a> ({{ hot_data.read_num_sum }})
+          </li>
+        {% empty %}
+          <li>
+              本周暂无热门
+          </li>  
+        {% endfor %}
+    </ul>
+</div> 
     <script> 
              var options= { 
                 chart: {
