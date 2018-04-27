@@ -1,7 +1,7 @@
 import datetime
 from django.db.models import Sum
 from django.utils import timezone
-from django.shortcuts import render_to_response
+from django.shortcuts import render_to_response,render
 from django.core.cache import cache
 from django.contrib.contenttypes.models import ContentType
 from blog.models import Blog
@@ -28,4 +28,4 @@ def home(request):
     context['yesterday_hot_data']=yesterday_hot_data    
     context['seven_days_hot_data']=seven_days_hot_data
     # context['dates']=dates
-    return render_to_response('home.html',context)
+    return render(request,'home.html',context)

@@ -51,7 +51,7 @@
     <ul>
         {% for hot_data in seven_days_hot_data %}
           <li>
-              <a href="{% url 'blog_detail' hot_data.id %}">{{ hot_data.title }}</a> ({{ hot_data.read_num_sum }})
+              <a href="{% url 'blog_detail' hot_data.id %}">{{ hot_data.title }}</a> ({{ hot_data.read_num_sum }})                
           </li>
         {% empty %}
           <li>
@@ -81,7 +81,7 @@
                 },
                 series: [{
                     name: '阅读量',
-                    data:{{ read_nums }},
+                    data:{{ read_nums}},
                 }],
                 plotOptions:{
                      line:{

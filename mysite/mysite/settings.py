@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'read_statistics', #添加app
     'ckeditor',#注册富文本编辑
     'ckeditor_uploader',
+    'comment',
 ]
 
 MIDDLEWARE = [
