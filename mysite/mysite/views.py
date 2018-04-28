@@ -1,10 +1,12 @@
 import datetime
 from django.db.models import Sum
 from django.utils import timezone
-from django.shortcuts import render_to_response,render
+from django.shortcuts import render,redirect
 from django.core.cache import cache
 from django.contrib.contenttypes.models import ContentType
 from blog.models import Blog
+from django.contrib import auth
+from django.urls import reverse
 from read_statistics.utils import get_days_read_data,get_today_hot_data,get_yesterday_hot_data
 
 def get_seven_days_hot_blogs():
@@ -29,3 +31,16 @@ def home(request):
     context['seven_days_hot_data']=seven_days_hot_data
     # context['dates']=dates
     return render(request,'home.html',context)
+
+def login(request):
+    username=request.POST.get('username','')
+    password=request.POST.get('password','')
+    user=auth.authenticate(request,username=username,password=password)
+    referer=request.META.get('HTTP_REFERER',reverse('home'))
+    if user is not None:
+        auth.login(request,user)
+        return redirect(referer)
+    else:
+        return render(request,'error.html',{'message':'用户名或密码错误'})
+            
+        
