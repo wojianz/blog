@@ -3,7 +3,9 @@ from .models import Blog,BlogType
 from django.conf import settings
 from django.db.models import Count
 from django.core.paginator import Paginator
+from django.contrib.contenttypes.models import ContentType
 from read_statistics.utils import read_statistics_once_read
+from comment.models import Comment
 
 def get_blog_list_common_data(request,blogs_all_list):
     paginator=Paginator(blogs_all_list,settings.EACH_PAGE_BLOGS)
@@ -41,10 +43,13 @@ def blog_list(request):
 def blog_detail(request,blog_pk):
     blog=get_object_or_404(Blog,pk=blog_pk)
     read_cookie_key=read_statistics_once_read(request,blog)   
+    blog_content_type=ContentType.objects.get_for_model(blog)
+    comments=Comment.objects.filter(content_type=blog_content_type,object_id=blog.pk)
     context={}
     context['previous_blog']=Blog.objects.filter(creat_time__gt=blog.creat_time).last()
     context['next_blog']=Blog.objects.filter(creat_time__lt=blog.creat_time).first()
     context['blog']=blog
+    context['comments']=comments
     response=render(request,'blog/blog_detail.html',context)   
     response.set_cookie(read_cookie_key,'true')
     return response 

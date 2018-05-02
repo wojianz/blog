@@ -61,30 +61,34 @@
       <div class="col-xs-10 col-xs-offset-1">
         <div class="comment-area">
           <h3 class="comment-area-title">提交评论</h3>
-            {% if user.is_authenticated %}
-             {{ user.username }},留下你的评论
-             <form action="" method="POST">
+            {% if user.is_authenticated %}            
+             <form action="{% url 'update_comment' %}" method="POST" style="overflow:hidden">
                 {% csrf_token %}
-                <textarea id="comment_text" name="text"></textarea>
+                <div class="form-group">
+                  <label for="comment_text">{{ user.username }},留下你的评论</label>
+                  <textarea id="comment_text" class="form-control" name="text" rows="4"></textarea>
+                </div>
                 <input type="hidden" name="object_id" value="{{ blog.pk }}">
                 <input type="hidden" name="content_type" value="blog">
-                <input type="submit" value="评论">
+                <input type="submit" value="评论" class="btn btn-primary" style="float:right">
              </form>
             {% else %}
-             未登录，请登录评论
-            <form action="{% url 'login' %}" method="POST">
-              {% csrf_token %}
-              <span>用户名：</span>
-              <input type="text" name="username">
-              <span>密码：</span>
-              <input type="password" name="password">
-              <input type="submit" value="登录">
-            </form>
+              尚未登录，请登录评论
+              <a href="{% url 'login' %}?from={{ request.get_full_path }}">登录</a>
             {% endif %}
           </div>
          
         <div class="comment-area">
            <h3 class="comment-area-title">评论列表：</h3>
+           {% for comment in comments %}
+           <div>
+             {{ comment.user.username }}
+             {{ comment.comment_time|date:"Y-m-d" }}:
+             {{ comment.text }}
+           </div> 
+           {% empty %}
+              暂无
+           {% endfor %}
         </div>
       </div>
     </div>

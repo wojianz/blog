@@ -1,11 +1,15 @@
 {% extends "base.html" %}
 {% load staticfiles %}
 {% block title %}
-    错误
+    登录
 {% endblock %}
 {% block hearder_extend %}
  active
 {% endblock hearder_extend %}
 {% block content %}
-   {{ message }}<a href="{{ redirect_to }}">返回</a>
+<form action="" method="POST">
+    {% csrf_token %}
+    {{ login_form }}
+    <input type="submit" value="登录">
+</form>
 {% endblock %} 
