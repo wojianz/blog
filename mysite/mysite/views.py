@@ -8,7 +8,8 @@ from blog.models import Blog
 from django.contrib import auth
 from django.urls import reverse
 from read_statistics.utils import get_days_read_data,get_today_hot_data,get_yesterday_hot_data
-from .forms import LoginForm
+from django.contrib.auth.models import User
+from .forms import LoginForm,RegForm
 
 def get_seven_days_hot_blogs():
     today=timezone.now().date()
@@ -46,5 +47,28 @@ def login(request):
     context = {}
     context['login_form'] = login_form
     return render(request, 'login.html', context)
+
+def register(request):
+    if request.method=='POST':
+        reg_form=RegForm(request.POST)
+        if reg_form.is_valid():
+            username=reg_form.cleaned_data['username']
+            email=reg_form.cleaned_data['email']
+            password=reg_form.cleaned_data['password']
+            #创建user
+            user=User.objects.create_user(username,email,password)
+            user.save()
+            user=auth.authenticate(username=username,password=password)
+            auth.login(request,user) 
+            return redirect(request.GET.get('from',reverse('home')))   
+    else:
+        reg_form=RegForm()
+     
+    context={}
+    context['reg_form']=reg_form
+    return render(request,'register.html',context)        
+        
+    
+    
             
            

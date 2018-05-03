@@ -132,6 +132,18 @@ STATICFILES_DIRS=[
 MEDIA_URL = "/media/"
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 CKEDITOR_UPLOAD_PATH = "upload/"
+CKEDITOR_CONFIGS ={
+    'comment_ckeditor':{
+        'toolbar':'custom',
+        'toolbar_custom':[
+            ['Bold', 'Italic', 'Underline','Strike','Subscript','Superscript'],
+            ['TextColor','BGcolor','RemoveFormat'],
+            ['NumberedList', 'BulletedList'],
+            ['Link', 'Unlink'],
+            ['Smiley','SpecialChar','Blockquote']
+        ]
+    }
+}
 # 自定义页面显示博客的数目
 EACH_PAGE_BLOGS=3
 
