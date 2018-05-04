@@ -7,7 +7,7 @@
     <meta http-equ iv="X-UA-Compatible" content="ie=edge">
     <title>{% block title %}{% endblock %}</title>
     <link rel="stylesheet" href="{% static 'base.css' %}">
-    <link rel="stylesheet" href="{% static 'jquery-1.12.4.min.js' %}">
+    <link rel="stylesheet" href="{% static 'jquery-3.3.1.min.js' %}">
     <link rel="stylesheet" href="{% static 'bootstrap-3.3.7/css/bootstrap.min.css' %}">
     <script type="text/javasctipt" src="{% static 'bootstrap-3.3.7/js/bootstrap.min.js' %}"></script>
      {% block hearder_extend %}{% endblock hearder_extend %}
@@ -32,5 +32,6 @@
           </div>
       </nav>
    {% block content %}{% endblock %} 
+   {% block script_extends %}{% endblock %}
 </body>
 </html>
