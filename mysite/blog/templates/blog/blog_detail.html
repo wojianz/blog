@@ -108,7 +108,6 @@
        CKEDITOR.instances['id_text'].updateElement();
        $.ajax({
          url:"{% url 'update_comment' %}",
-         dataType:'json',
          type:'POST',
          data:{
            $("#comment_form").serialize();
